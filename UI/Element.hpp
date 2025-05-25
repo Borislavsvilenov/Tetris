@@ -19,6 +19,8 @@ public:
     Element(const Vec2& p, const Vec2& s, Color pcol, Color scol, std::string  text);
     Element();
     ~Element() = default;
+
+    [[nodiscard]] bool hovered(const Vec2& mousePos) const;
 };
 
 #endif //ELEMENT_HPP

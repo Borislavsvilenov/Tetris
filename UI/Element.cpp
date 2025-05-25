@@ -17,3 +17,13 @@ Element::Element() : PColor(WHITE), SColor(BLACK), visible(false)
 {
 
 }
+
+bool Element::hovered(const Vec2& mousePos) const {
+    return mousePos.x >= pos.x
+        && mousePos.x < pos.x + size.x
+        && mousePos.y >= pos.y
+        && mousePos.y < pos.y + size.y
+        && visible;
+}
+
+

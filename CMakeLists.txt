@@ -32,6 +32,8 @@ add_executable(${PROJECT_NAME} main.cpp
         Vector/Vec2.hpp
         UI/Element.cpp
         UI/Element.hpp
+        Game/Game.cpp
+        Game/Game.hpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${raylib_INCLUDE_DIRS})
