@@ -34,6 +34,8 @@ add_executable(${PROJECT_NAME} main.cpp
         UI/Element.hpp
         Game/Game.cpp
         Game/Game.hpp
+        Game/Tiles.cpp
+        Game/Tiles.h
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${raylib_INCLUDE_DIRS})

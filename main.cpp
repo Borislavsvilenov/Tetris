@@ -3,7 +3,7 @@
 
 
 int main() {
-    UI frame(1000, 1100);
+    UI frame(900, 900);
 
     frame.loop();
 

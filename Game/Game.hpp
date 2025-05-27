@@ -2,13 +2,20 @@
 #define GAME_HPP
 #include <array>
 
+#include "Tiles.h"
+
 
 class Game {
 public:
     bool running = false;
     bool moving = false;
 
-    std::array<bool, 200> tiles;
+    Tiles* block1 = {};
+    Tiles* block2 = {};
+    Tiles* block3 = {};
+    Tiles* block4 = {};
+
+    std::array<Tiles, 200> tiles;
 
     Game();
     ~Game();

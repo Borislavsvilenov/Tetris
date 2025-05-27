@@ -13,7 +13,7 @@
 UI::UI(const int w, const int h) :
     ScreenWidth(w),
     ScreenHeight(h),
-    GameX(ScreenWidth / 2 - 250),
+    GameX(ScreenWidth / 2 - 205),
     GameY(60)
 {
     elements[0] = Element({castF(ScreenWidth / 2 - 100), 10}, {200, 40}, DARK, GREEN, "TETRIS");
@@ -72,11 +72,11 @@ void UI::drawGame() const {
         return;
     }
 
-    DrawRectangle(GameX, GameY, 500, 1000, BLACK);
+    DrawRectangle(GameX, GameY, 410, ScreenHeight - 80, BLACK);
 
     for (int i = 0; i < game.tiles.size(); i++) {
         if (game.tiles[i]) {
-            DrawRectangle(50*(i % 10) + GameX, 50*(std::floor(i / 10)) + GameY, 50, 50, GREEN);
+            DrawRectangle(41*(i % 10) + GameX, 41*(std::floor(i / 10)) + GameY, 41, 41, GREEN);
         }
     }
 }

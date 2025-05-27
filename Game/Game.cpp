@@ -7,13 +7,13 @@ Game::Game() {
 }
 
 Game::~Game() {
-
+    block1 = nullptr;
+    block2 = nullptr;
+    block3 = nullptr;
+    block4 = nullptr;
 }
 
 void Game::start() {
-    for (int i = 0; i < tiles.size(); i++) {
-        tiles[i] = false;
-    }
     running = true;
 }
 
@@ -33,31 +33,23 @@ void Game::update(int frame) {
 }
 
 void Game::spawnBlock() {
-    moving = true;
     spawnLong();
 }
 
 void Game::spawnLong() {
-    tiles[3] = true;
-    tiles[4] = true;
-    tiles[5] = true;
-    tiles[6] = true;
+    tiles[3].state = true;
+    tiles[4].state = true;
+    tiles[5].state = true;
+    tiles[6].state = true;
+
+    block1 = &tiles[3];
+    block2 = &tiles[4];
+    block3 = &tiles[5];
+    block4 = &tiles[6];
 }
 
 void Game::move() {
-    bool moved = false;
 
-    for (int i = tiles.size() - 11; i >= 0; i--) {
-        if (tiles[i] && !tiles[i+10]) {
-            tiles[i] = false;
-            tiles[i+10] = true;
-            moved = true;
-        }
-    }
-
-    if (!moved) {
-        moving = false;
-    }
 }
 
 
