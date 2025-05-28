@@ -75,7 +75,7 @@ void UI::drawGame() const {
     DrawRectangle(GameX, GameY, 410, ScreenHeight - 80, BLACK);
 
     for (int i = 0; i < game.tiles.size(); i++) {
-        if (game.tiles[i]) {
+        if (game.tiles[i].state) {
             DrawRectangle(41*(i % 10) + GameX, 41*(std::floor(i / 10)) + GameY, 41, 41, GREEN);
         }
     }
