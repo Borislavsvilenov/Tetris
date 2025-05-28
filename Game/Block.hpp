@@ -13,7 +13,8 @@ public:
     int x;
     int y;
 
-    int state;
+    int rotationState;
+    int blockType;
 
     std::array<int, 16> blockGrid;
 
@@ -22,6 +23,14 @@ public:
     void draw(int GameS, int GameX, int GameY) const;
 
     void rotate();
+    void update();
+    void Oblock();
+    void Tblock();
+    void Sblock();
+    void Zblock();
+    void Lblock();
+    void Jblock();
+    void Iblock();
 };
 
 

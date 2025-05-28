@@ -80,21 +80,18 @@ void UI::buttonPressed(const int i) {
         switch (i) {
             case 0:
 
-                return;
-
+                break;
             case 1:
 
                 elements[1].visible = false;
                 elements[2].visible = false;
                 game.start();
-
             case 2:
 
-                return;
-
+                break;
             default:
 
-                return;
+                break;
         }
     }
 }
