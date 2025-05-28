@@ -10,11 +10,11 @@
 #define castF static_cast<float>
 
 
-UI::UI(const int w, const int h) :
-    ScreenWidth(w),
-    ScreenHeight(h),
-    GameX(ScreenWidth / 2 - 205),
-    GameY(60)
+UI::UI(const int w, const int h) : ScreenWidth(w),
+                                   ScreenHeight(h),
+                                   GameS(40),
+                                   GameX(ScreenWidth / 2 - GameS * 5),
+                                   GameY(60)
 {
     elements[0] = Element({castF(ScreenWidth / 2 - 100), 10}, {200, 40}, DARK, GREEN, "TETRIS");
     elements[1] = Element({castF(ScreenWidth / 2 - 100), 300}, {200, 40}, BLACK, GREEN, "PLAY");
@@ -71,17 +71,11 @@ void UI::drawGame() const {
     if (!game.running) {
         return;
     }
-
-    DrawRectangle(GameX, GameY, 410, ScreenHeight - 80, BLACK);
-
-    for (int i = 0; i < game.tiles.size(); i++) {
-        if (game.tiles[i].state) {
-            DrawRectangle(41*(i % 10) + GameX, 41*(std::floor(i / 10)) + GameY, 41, 41, GREEN);
-        }
-    }
+    game.draw(GameS, GameX, GameY);
+    game.block->draw(GameS, GameX, GameY);
 }
 
-void UI::buttonPressed(int i) {
+void UI::buttonPressed(const int i) {
     if (elements[i].hovered(mousePos)) {
         switch (i) {
             case 0:

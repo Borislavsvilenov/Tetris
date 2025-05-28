@@ -1,32 +1,33 @@
 #ifndef GAME_HPP
 #define GAME_HPP
+#include <raylib.h>
+#include <cmath>
 #include <array>
 
-#include "Tiles.h"
+#include "Block.hpp"
 
+#define LOG(x) std::cout << x << std::endl
 
 class Game {
 public:
     bool running = false;
     bool moving = false;
 
-    Tiles* block1 = {};
-    Tiles* block2 = {};
-    Tiles* block3 = {};
-    Tiles* block4 = {};
+    std::array<int, 200> tiles;
 
-    std::array<Tiles, 200> tiles;
+    Block* block = {};
 
     Game();
     ~Game();
 
     void start();
+    void reset();
     void update(int frame);
 
     void spawnBlock();
-    void spawnLong();
-
     void move();
+
+    void draw(int GameS, int GameX, int GameY) const;
 };
 
 

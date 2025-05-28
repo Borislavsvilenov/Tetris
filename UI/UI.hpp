@@ -21,8 +21,10 @@ public:
     Vec2 mousePos;
 
     Game game;
+    int GameS;
     int GameX;
     int GameY;
+
 
     UI(int w, int h);
     ~UI();
