@@ -5,8 +5,14 @@
 Block::Block() : x(0), y(0), rotationState(0), blockType(0)
 {
     blockGrid.fill(0);
-    blockType = 2;
-    update();
+    blockType = 0;
+}
+
+void Block::newBlock() {
+    blockGrid.fill(0);
+    blockType = (rand() % 6) + 1;
+    x = 4;
+    y = 0;
 }
 
 void Block::draw(const int GameS, const int GameX, const int GameY) const {
@@ -34,7 +40,6 @@ void Block::draw(const int GameS, const int GameX, const int GameY) const {
                 DrawRectangle(GameS * (x + (i % 4)) + GameX, GameS * ((std::floor(i / 4)) + y) + GameY, GameS, GameS, LIGHTGRAY);
                 break;
             default:
-                DrawRectangle(GameS * (x + (i % 4)) + GameX, GameS * ((std::floor(i / 4)) + y) + GameY, GameS, GameS, BLACK);
                 break;
         }
     }
@@ -46,6 +51,14 @@ void Block::rotate() {
     } else {
         rotationState++;
     }
+}
+
+void Block::moveDown() {
+    y++;
+}
+
+void Block::moveSide(const int direction) {
+    x += direction;
 }
 
 void Block::update() {
@@ -184,28 +197,30 @@ void Block::Lblock() {
 void Block::Jblock() {
     switch (rotationState) {
         case 0:
-            blockGrid[0] = 6;
-            blockGrid[4] = 6;
-            blockGrid[5] = 6;
-            blockGrid[6] = 6;
-            break;
-        case 1:
-            blockGrid[1] = 6;
-            blockGrid[5] = 6;
-            blockGrid[9] = 6;
-            blockGrid[10] = 6;
-            break;
-        case 2:
             blockGrid[4] = 6;
             blockGrid[5] = 6;
             blockGrid[6] = 6;
             blockGrid[8] = 6;
             break;
-        case 3:
+        case 1:
             blockGrid[0] = 6;
             blockGrid[1] = 6;
             blockGrid[5] = 6;
             blockGrid[9] = 6;
+            break;
+        case 2:
+            blockGrid[2] = 6;
+            blockGrid[4] = 6;
+            blockGrid[5] = 6;
+            blockGrid[6] = 6;
+
+            break;
+        case 3:
+            blockGrid[1] = 6;
+            blockGrid[5] = 6;
+            blockGrid[9] = 6;
+            blockGrid[10] = 6;
+
             break;
     }
 }

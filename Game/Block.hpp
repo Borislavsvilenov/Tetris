@@ -3,6 +3,7 @@
 #include <array>
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
 
 #include <raylib.h>
 
@@ -22,8 +23,12 @@ public:
 
     void draw(int GameS, int GameX, int GameY) const;
 
+    void newBlock();
     void rotate();
+    void moveDown();
+    void moveSide(int direction);
     void update();
+
     void Oblock();
     void Tblock();
     void Sblock();

@@ -25,19 +25,55 @@ void Game::update(int frame) {
     if (!running) {
         return;
     }
+
+    block->update();
+
     if (frame % 20 != 0) {
         return;
     }
 
     if (!moving) {
         spawnBlock();
+        moving = true;
     } else {
-        move();
+        block->moveDown();
+        stopBlock();
     }
 }
 
 void Game::spawnBlock() {
+    block->newBlock();
+}
 
+void Game::stopBlock() {
+    for (int i = 0; i < block->blockGrid.size(); i++) {
+        if (block->blockGrid[i] > 0) {
+            int gridX = block->x + (i % 4);
+            int gridY = block->y + (floor(i / 4));
+            tiles[gridX + 10 * gridY] = block->blockGrid[i];
+        }
+    }
+    moving = false;
+}
+
+void Game::checkCollision() {
+    if (block->y < 16) {
+        return;
+    }
+
+    if (block->blockGrid[15] == 0 && block->blockGrid[14] == 0 && block->blockGrid[13] == 0 && block->blockGrid[12] == 0) {
+        if (block->y == 16) {
+            return;
+        }
+    }
+
+    if (block->blockGrid[11] == 0 && block->blockGrid[10] == 0 && block->blockGrid[9] == 0 && block->blockGrid[8] == 0) {
+        if (block->y == 17) {
+            return;
+        }
+    }
+
+    stopBlock();
 }
 
 void Game::move() {

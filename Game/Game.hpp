@@ -25,6 +25,8 @@ public:
     void update(int frame);
 
     void spawnBlock();
+    void stopBlock();
+    void checkCollision();
     void move();
 
     void draw(int GameS, int GameX, int GameY) const;

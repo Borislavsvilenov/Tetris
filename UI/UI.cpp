@@ -105,5 +105,9 @@ void UI::handleInput() {
             buttonPressed(i);
         }
     }
+
+    if (IsKeyPressed(KEY_UP)) {
+        game.block->rotate();
+    }
 }
 
